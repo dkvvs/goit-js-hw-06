@@ -71,14 +71,12 @@ console.log(calculateTotalBalance(users)); // 20916
 console.log('Задание 8');
 
 const getUsersWithFriend = (users, friendName) => {
-  const result = users.filter(user => {
-    if (user.friends.includes(friendName)) {
-      return true;
-    }
-    return false;
-  });
-  const arrNames = result.map(user => user.name);
-  return arrNames;
+  const result = users
+    .filter(user => {
+      return user.friends.includes(friendName);
+    })
+    .map(user => user.name);
+  return result;
 };
 
 console.log(getUsersWithFriend(users, 'Briana Decker')); // [ 'Sharlene Bush', 'Sheree Anthony' ]
@@ -88,15 +86,10 @@ console.log(getUsersWithFriend(users, 'Goldie Gentry')); // [ 'Elma Head', 'Sher
 console.log('Задание 9');
 
 const getNamesSortedByFriendsCount = users => {
-  const friendsStats = users.map(user => ({
-    name: user.name,
-    friendsCount: user.friends.length,
-  }));
-  const arrSort = friendsStats.sort(
-    (prev, next) => prev.friendsCount - next.friendsCount,
+  const arrSort = users.sort(
+    (prev, next) => prev.friends.length - next.friends.length,
   );
-  const result = arrSort.map(user => user.name);
-  return result;
+  return arrSort.map(user => user.name);
 };
 
 console.log(getNamesSortedByFriendsCount(users));
