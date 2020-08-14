@@ -14,82 +14,81 @@ console.log('Задание 2');
 const getUsersWithEyeColor = (users, color) =>
   users.filter(user => user.eyeColor === color);
 
-console.log(getUsersWithEyeColor(users, 'blue')); // [объект Moore Hensley, объект Sharlene Bush, объект Carey Barr]
+console.log(getUsersWithEyeColor(users, 'blue')); 
+// [объект Moore Hensley, объект Sharlene Bush, объект Carey Barr]
 
 // # Задание 3
+
 console.log('Задание 3');
 
 const getUsersWithGender = (users, gender) => {
-  const arrObj = users.filter(user => user.gender === gender);
-  return arrObj.map(user => user.name);
+  return users.filter(user => user.gender === gender).map(user => user.name);
 };
 
-console.log(getUsersWithGender(users, 'male')); // [ 'Moore Hensley', 'Ross Vazquez', 'Carey Barr', 'Blackburn Dotson' ]
+console.log(getUsersWithGender(users, 'male')); 
+// [ 'Moore Hensley', 'Ross Vazquez', 'Carey Barr', 'Blackburn Dotson' ]
 
 // # Задание 4
 console.log('Задание 4');
 
 const getInactiveUsers = users => users.filter(user => !user.isActive);
 
-console.log(getInactiveUsers(users)); // [объект Moore Hensley, объект Ross Vazquez, объект Blackburn Dotson]
+console.log(getInactiveUsers(users)); 
+// [объект Moore Hensley, объект Ross Vazquez, объект Blackburn Dotson]
 
 // # Задание 5
 console.log('Задание 5');
 
-const getUserWithEmail = (users, email) => {
-  const emailName = users.filter(user => user.email === email);
-  return emailName;
-};
+const getUserWithEmail = (users, email) =>
+  users.filter(user => user.email === email);
 
-console.log(getUserWithEmail(users, 'shereeanthony@kog.com')); // {объект пользователя Sheree Anthony}
-console.log(getUserWithEmail(users, 'elmahead@omatom.com')); // {объект пользователя Elma Head}
+console.log(getUserWithEmail(users, 'shereeanthony@kog.com')); 
+// {объект пользователя Sheree Anthony}
+console.log(getUserWithEmail(users, 'elmahead@omatom.com')); 
+// {объект пользователя Elma Head}
 
 // # Задание 6
 console.log('Задание 6');
 
-const getUsersWithAge = (users, min, max) => {
-  const arrAge = users.filter(user => user.age > min && user.age < max);
-  return arrAge;
-};
+const getUsersWithAge = (users, min, max) =>
+  users.filter(user => user.age > min && user.age < max);
 
-console.log(getUsersWithAge(users, 20, 30)); // [объект Ross Vazquez, объект Elma Head, объект Carey Barr]
+console.log(getUsersWithAge(users, 20, 30)); 
+// [объект Ross Vazquez, объект Elma Head, объект Carey Barr]
 
-console.log(getUsersWithAge(users, 30, 40));
+console.log(getUsersWithAge(users, 30, 40)); 
 // [объект Moore Hensley, объект Sharlene Bush, объект Blackburn Dotson, объект Sheree Anthony]
 
 // # Задание 7
 console.log('Задание 7');
 
-const calculateTotalBalance = users => {
-  const allBalance = users.reduce((acc, user) => acc + user.balance, 0);
-  return allBalance;
-};
+const calculateTotalBalance = users =>
+  users.reduce((acc, user) => acc + user.balance, 0);
 
-console.log(calculateTotalBalance(users)); // 20916
+console.log(calculateTotalBalance(users)); 
+// 20916
 
 // # Задание 8
 console.log('Задание 8');
 
 const getUsersWithFriend = (users, friendName) => {
-  const result = users
-    .filter(user => {
-      return user.friends.includes(friendName);
-    })
+  return users
+    .filter(user => user.friends.includes(friendName))
     .map(user => user.name);
-  return result;
 };
 
-console.log(getUsersWithFriend(users, 'Briana Decker')); // [ 'Sharlene Bush', 'Sheree Anthony' ]
-console.log(getUsersWithFriend(users, 'Goldie Gentry')); // [ 'Elma Head', 'Sheree Anthony' ]
+console.log(getUsersWithFriend(users, 'Briana Decker')); 
+// [ 'Sharlene Bush', 'Sheree Anthony' ]
+console.log(getUsersWithFriend(users, 'Goldie Gentry')); 
+// [ 'Elma Head', 'Sheree Anthony' ]
 
 // # Задание 9
 console.log('Задание 9');
 
 const getNamesSortedByFriendsCount = users => {
-  const arrSort = users.sort(
-    (prev, next) => prev.friends.length - next.friends.length,
-  );
-  return arrSort.map(user => user.name);
+  return users
+    .sort((prev, next) => prev.friends.length - next.friends.length)
+    .map(user => user.name);
 };
 
 console.log(getNamesSortedByFriendsCount(users));
@@ -103,10 +102,9 @@ const getSortedUniqueSkills = users => {
   const result = [];
   users.forEach(user => allSkills.push(...user.skills));
   allSkills.forEach(user => {
-    if (result.includes(user)) {
-      return false;
+    if (!result.includes(user)) {
+      result.push(user);
     }
-    result.push(user);
   });
   return result.sort();
 };
